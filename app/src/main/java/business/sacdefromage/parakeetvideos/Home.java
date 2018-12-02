@@ -1,4 +1,4 @@
-package business.sacdefromage.videoandroidjava;
+package business.sacdefromage.parakeetvideos;
 
 import android.Manifest;
 import android.content.Intent;
@@ -72,7 +72,7 @@ public class Home extends AppCompatActivity {
 
     private void playVideoInView(Uri videoUri)
     {
-        setContentView(R.layout.activity_video);
+        setContentView(R.layout.activity_video_editor);
         viewVideo = findViewById(R.id.viewVideo);
         MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(viewVideo);
