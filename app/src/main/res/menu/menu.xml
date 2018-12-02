@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:id="@+id/btnMenuTakeVideo"
+        android:title="Filmer"/>
+
+    <item android:id="@+id/btnMenuUpdateVideo"
+        android:title="Modifier"/>
+
+    <item android:id="@+id/btnMenuSend"
+        android:title="Envoyer"/>
+
+</menu>
