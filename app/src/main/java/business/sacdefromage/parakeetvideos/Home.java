@@ -79,10 +79,14 @@ public class Home extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        toast(Integer.toString(resultCode));
         if (requestCode == REQUEST_VIDEO_CAPTURE) {
             if (resultCode == RESULT_OK) {
                 // User approved the video, take him to the filter
+                Intent editIntent = new Intent(Home.this, Edit.class);
+
+                Uri videoUri = intent.getData();
+                editIntent.putExtra("videoUri", videoUri.toString());
+                startActivity(editIntent);
 
                 // Uri videoUri = intent.getData();
                 // playVideoInView(videoUri);
