@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Home">
+
     <Button
-        android:id="@+id/btnTakeVideo"
-        android:layout_width="380dp"
-        android:layout_height="40dp"
+        android:id="@+id/btn_take_video_home"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="39dp"
         android:text="Prendre une vidéo"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-    />
+        app:layout_constraintBottom_toTopOf="@+id/btn_edit_video_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_edit_video_home"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="47dp"
+        android:text="Modifier une vidéo"
+        app:layout_constraintBottom_toTopOf="@+id/btn_send_video_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_take_video_home" />
+
+    <Button
+        android:id="@+id/btn_send_video_home"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="305dp"
+        android:text="Envoyer une vidéo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_edit_video_home" />
 </android.support.constraint.ConstraintLayout>
