@@ -22,6 +22,7 @@ public class Home extends AppCompatActivity {
     Button btnEditVideo;
     Button btnSendVideo;
 
+    //region onCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,9 @@ public class Home extends AppCompatActivity {
         btnSendVideo = findViewById(R.id.btn_send_video_home);
         btnSendVideo.setOnClickListener(btnSendVideoOnClick);
     }
+    //endregion
 
+    //region Take Video
     private View.OnClickListener btnTakeVideoOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -53,7 +56,9 @@ public class Home extends AppCompatActivity {
             }
         }
     };
+    //endregion
 
+    //region Edit video
     private View.OnClickListener btnEditVideoOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -68,7 +73,9 @@ public class Home extends AppCompatActivity {
             }
         }
     };
+    //endregion
 
+    //region Send Video
     private View.OnClickListener btnSendVideoOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -76,7 +83,9 @@ public class Home extends AppCompatActivity {
             startActivity(editIntent);
         }
     };
+    //endregion
 
+    //region Activity Result
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == REQUEST_VIDEO_CAPTURE) {
@@ -95,7 +104,9 @@ public class Home extends AppCompatActivity {
             }
         }
     }
+    //endregion
 
+    //region Request Permissions Result
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
     {
@@ -113,7 +124,9 @@ public class Home extends AppCompatActivity {
             }
         }
     }
+    //endregion
 
+    //region Private helpers
     private void playVideoInView(Uri videoUri)
     {
         setContentView(R.layout.activity_video_editor);
@@ -149,4 +162,5 @@ public class Home extends AppCompatActivity {
     {
         Toast.makeText(this, message, length).show();
     }
+    //endregion
 }

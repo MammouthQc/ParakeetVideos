@@ -8,13 +8,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import java.io.File;
-
 public class Send extends AppCompatActivity {
     ImageButton imgBtnSendMessenger;
     ImageButton imgBtnSendEmail;
     Uri videoUri;
 
+    //region onCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +32,9 @@ public class Send extends AppCompatActivity {
         imgBtnSendEmail = findViewById(R.id.imgBtn_sender_mail);
         imgBtnSendEmail.setOnClickListener(btnSendEmailOnClick);
     }
+    //endregion
 
+    //region Messenger
     private View.OnClickListener btnSendMessengerOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -42,7 +43,9 @@ public class Send extends AppCompatActivity {
             Toast.makeText(Send.this, "Envoie Messenger - N'est pas encore développé", Toast.LENGTH_SHORT).show();
         }
     };
+    //endregion
 
+    //region Email
     private View.OnClickListener btnSendEmailOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -68,4 +71,5 @@ public class Send extends AppCompatActivity {
             }
         }
     };
+    //endregion
 }
