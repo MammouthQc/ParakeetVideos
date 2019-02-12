@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
-import java.io.DataOutputStream;
 
 import nl.bravobit.ffmpeg.ExecuteBinaryResponseHandler;
 import nl.bravobit.ffmpeg.FFmpeg;
@@ -73,7 +72,8 @@ public class Edit extends AppCompatActivity {
             {
                 "-i",
                 currentUri,
-                "-filter_complex \"[v]reverse[r];[v][r]concat\"",
+                "-filter_complex",
+                "[v]reverse[r];[v][r]concat",
                 outputVideoUri
             };
 
@@ -86,22 +86,32 @@ public class Edit extends AppCompatActivity {
             if (ffmpeg.isSupported()) {
                 ffmpeg.execute(commands, new ExecuteBinaryResponseHandler() {
                     @Override
+                    public void onStart() {
+                        Log.d("Edit Video START", "");
+                    }
+
+                    @Override
                     public void onFailure(String message) {
-                        Toast.makeText(Edit.this, "Failed running tasks", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Edit.this, "La conversion vidéo n'a pas fonctionnée... Ré-essayez.", Toast.LENGTH_LONG).show();
                         Log.d("Edit Video FAILURE", message);
                     }
 
                     @Override
-                    public void onSuccess(String message) {
-                        Toast.makeText(Edit.this, "Success running tasks: \n " + message, Toast.LENGTH_LONG).show();
-
-                        videoUri = Uri.parse(outputVideoUri);
-                        playVideoInView(videoUri);
+                    public void onProgress(String message) {
+                        Log.d("Edit Video PROGRESS", message);
                     }
 
+
+                    @Override
+                    public void onSuccess(String message) {
+                        videoUri = Uri.parse(outputVideoUri);
+                        //playVideoInView(videoUri);
+                        Toast.makeText(Edit.this, "Edit vidéo done", Toast.LENGTH_SHORT);
+                        Log.d("Edit Video SUCCESS", message);
+                    }
                     @Override
                     public void onFinish() {
-                        Log.d("Edit Video FINISH","");
+                        Log.d("Edit Video FINISH", "");
                     }
                 });
             }
